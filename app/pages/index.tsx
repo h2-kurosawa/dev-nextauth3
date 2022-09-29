@@ -8,13 +8,15 @@ export default function Home() {
 	if (session) {
 		return (
 			<>
-				Signed in as {session.user.email}
+				It is next-auth@3.27 <br />
+				Signed in as {session.user.email} <br />
 				<button onClick={() => signOut()}>Sign out</button>
 			</>
 		)
 	} else {
 		return (
 			<>
+				It is next-auth@3.27 <br />
 				Not signed in <br />
 				<button onClick={() => signIn()}>Sign in</button>
 			</>
