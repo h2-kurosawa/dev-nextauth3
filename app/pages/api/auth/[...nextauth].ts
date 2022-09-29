@@ -9,13 +9,8 @@ export default NextAuth({
 		}),
 	],
 	callbacks: {
-		async signIn(_, account, profile) {
-			console.log(account, profile)
-			if (
-				account.provider === 'google' &&
-				profile.verified_email &&
-				profile.email?.endsWith(process.env.PX_DOMAIN)
-			) {
+		async signIn(_user, account, profile) {
+			if (account.provider === 'google' && profile.email?.endsWith(process.env.PX_DOMAIN)) {
 				return true
 			} else {
 				return false
