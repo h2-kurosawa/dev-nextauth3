@@ -20,6 +20,12 @@ export default NextAuth({
 				return false
 			}
 		},
+		async redirect(url, baseUrl) {
+			if (url.startsWith('/')) return new URL(url, baseUrl).toString()
+			// Allows callback URLs on the same origin
+			else if (new URL(url).origin === baseUrl) return url
+			return baseUrl
+		},
 		async session(session, _) {
 			return session
 		},
